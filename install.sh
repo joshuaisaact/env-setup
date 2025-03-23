@@ -11,7 +11,7 @@ fi
 
 # Install required tools
 echo "Installing required tools..."
-brew install zsh oh-my-zsh micro fzf jandedobbeleer/oh-my-posh/oh-my-posh
+brew install zsh oh-my-zsh micro fzf jandedobbeleer/oh-my-posh/oh-my-posh eza
 
 # Create directories if they don't exist
 mkdir -p ~/.config/ohmyposh
