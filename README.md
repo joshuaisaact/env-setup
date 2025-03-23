@@ -14,5 +14,5 @@ My personal development environment configuration files for Mac and Linux.
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/env-setup.git
+   git clone https://github.com/joshuaisaact/env-setup.git
    cd env-setup
