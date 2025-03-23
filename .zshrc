@@ -1,4 +1,4 @@
-FUNCNEST=100
+FUNCNEST=2000
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
@@ -72,7 +72,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker golang npm node zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git docker golang npm node zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -126,6 +126,10 @@ alias ezsh="micro ~/.zshrc"
 alias szsh="source ~/.zshrc" 
 
 alias rdev="doppler run -- yarn dev"
+
+alias fzfp="fzf --preview 'bat --color=always {}' --preview-window '~3'"
+
+alias ls='eza --icons'
 
 
 export NVM_DIR="$HOME/.nvm"
