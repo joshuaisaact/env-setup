@@ -31,6 +31,25 @@ if command -v apt-get &> /dev/null; then
         sudo apt-get update
         sudo apt-get install -y eza
     fi
+
+# Install bat (syntax highlighting cat replacement)
+if ! command -v bat &> /dev/null; then
+    echo "Installing bat..."
+    if [ "$PKG_MANAGER" = "apt" ]; then
+        # For Ubuntu/Debian
+        sudo apt-get install -y bat
+        # Ubuntu/Debian usually name the binary 'batcat' to avoid name conflicts
+        if command -v batcat &> /dev/null && ! command -v bat &> /dev/null; then
+            echo "Creating bat symlink..."
+            mkdir -p ~/.local/bin
+            ln -sf /usr/bin/batcat ~/.local/bin/bat
+            echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+        fi
+    elif [ "$PKG_MANAGER" = "dnf" ]; then
+        # For Fedora/RHEL
+        sudo dnf install -y bat
+    fi
+fi
     
 elif command -v dnf &> /dev/null; then
     PKG_MANAGER="dnf"
@@ -58,6 +77,22 @@ elif command -v dnf &> /dev/null; then
 else
     echo "Unsupported Linux distribution. Please install packages manually."
     exit 1
+fi
+
+# Install fd (fast find alternative)
+if ! command -v fd &> /dev/null; then
+    echo "Installing fd-find..."
+    if [ "$PKG_MANAGER" = "apt" ]; then
+        sudo apt-get install -y fd-find
+        # Ubuntu/Debian usually name the binary 'fdfind'
+        if command -v fdfind &> /dev/null && ! command -v fd &> /dev/null; then
+            echo "Creating fd symlink..."
+            mkdir -p ~/.local/bin
+            ln -sf $(which fdfind) ~/.local/bin/fd
+        fi
+    elif [ "$PKG_MANAGER" = "dnf" ]; then
+        sudo dnf install -y fd-find
+    fi
 fi
 
 # Install Oh My Posh for Linux
