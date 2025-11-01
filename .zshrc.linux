@@ -142,6 +142,6 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-## SSH
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+eval $(keychain --eval --quiet id_ed25519)
