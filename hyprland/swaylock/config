@@ -1,0 +1,33 @@
+color=000000
+
+# Indicator (the circle that shows when you type)
+indicator-radius=100
+indicator-thickness=10
+
+# Ring colors
+ring-color=1a1a1a
+key-hl-color=7aa2f7
+bs-hl-color=f7768e
+
+# Inside the circle colors
+inside-color=000000
+inside-clear-color=000000
+inside-caps-lock-color=000000
+inside-ver-color=7aa2f7
+inside-wrong-color=f7768e
+
+# Text colors
+text-color=a9b1d6
+text-clear-color=a9b1d6
+text-caps-lock-color=e0af68
+text-ver-color=a9b1d6
+text-wrong-color=f7768e
+
+# Separator color (line between ring and inside)
+separator-color=00000000
+
+# Don't show keyboard layout
+hide-keyboard-layout
+
+# Don't fade in
+fade-in=0
