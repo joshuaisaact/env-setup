@@ -17,12 +17,23 @@ sudo pacman -Sy
 
 # Install basic requirements
 echo "Installing basic tools..."
-sudo pacman -S --needed --noconfirm zsh curl git fzf ripgrep fd bat eza
+sudo pacman -S --needed --noconfirm zsh curl git fzf ripgrep fd bat eza github-cli micro
 
-# Install micro editor
-if ! command -v micro &> /dev/null; then
-    echo "Installing micro editor..."
-    sudo pacman -S --needed --noconfirm micro
+# Install Zed editor
+if ! command -v zed &> /dev/null; then
+    echo "Installing Zed editor..."
+    # Check if AUR helper is available (yay or paru)
+    if command -v yay &> /dev/null; then
+        echo "Using yay to install Zed from AUR..."
+        yay -S --needed --noconfirm zed
+    elif command -v paru &> /dev/null; then
+        echo "Using paru to install Zed from AUR..."
+        paru -S --needed --noconfirm zed
+    else
+        echo "No AUR helper found. Installing Zed manually..."
+        curl -f https://zed.dev/install.sh | sh
+        echo "Zed installed to ~/.local/bin/zed"
+    fi
 fi
 
 # Install Oh My Posh
@@ -90,10 +101,14 @@ fi
 
 # Copy configuration files (only if they exist in current directory)
 echo "Copying configuration files..."
-if [ -f .zshrc ]; then
+if [ -f .zshrc.linux ]; then
+    cp .zshrc.linux ~/.zshrc
+    echo "Copied .zshrc.linux to ~/.zshrc"
+elif [ -f .zshrc ]; then
     cp .zshrc ~/
+    echo "Copied .zshrc to ~/.zshrc"
 else
-    echo "Warning: .zshrc not found in current directory, skipping..."
+    echo "Warning: .zshrc.linux or .zshrc not found in current directory, skipping..."
 fi
 
 if [ -f .config/ohmyposh/zen.toml ]; then
@@ -112,11 +127,15 @@ fi
 if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]; then
     echo "Installing zsh-autosuggestions plugin..."
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+else
+    echo "zsh-autosuggestions already installed, skipping..."
 fi
 
 if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]; then
     echo "Installing zsh-syntax-highlighting plugin..."
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+else
+    echo "zsh-syntax-highlighting already installed, skipping..."
 fi
 
 # Set zsh as default shell if it's not already
@@ -135,11 +154,13 @@ echo "  - zsh (shell)"
 echo "  - Oh My Zsh (framework)"
 echo "  - Oh My Posh (prompt)"
 echo "  - micro (editor)"
+echo "  - zed (editor)"
 echo "  - fzf (fuzzy finder)"
 echo "  - ripgrep (rg)"
 echo "  - fd (find alternative)"
 echo "  - bat (cat with syntax highlighting)"
 echo "  - eza (modern ls)"
+echo "  - github-cli (gh)"
 echo ""
 echo "Please run 'source ~/.zshrc' or restart your terminal to apply changes."
 echo ""

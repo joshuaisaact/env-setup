@@ -130,7 +130,7 @@ alias fzfp="fzf --preview 'bat --color=always {}' --preview-window '~3'"
 
 alias ls='eza --icons'
 
-alias cc='claude-code --dangerously-skip-permissions'
+alias cc='claude --dangerously-skip-permissions'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
