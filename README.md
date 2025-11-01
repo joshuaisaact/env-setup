@@ -1,6 +1,8 @@
 # Environment Setup
 
-My personal development environment configuration files for Mac and Linux.
+Personal dotfiles and setup scripts for getting a dev environment running on a new machine in one command. Mostly so I don't have to remember what tools I use every time I switch machines.
+
+Currently bouncing between macOS and Arch Linux. Recently moved from WSL to a proper Arch setup with Hyprland (still figuring out Wayland quirks but it's been pretty smooth).
 
 ## What's Included
 
