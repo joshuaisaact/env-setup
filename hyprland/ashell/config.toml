@@ -3,8 +3,8 @@ clipboard_cmd = "cliphist list | rofi -dmenu | cliphist decode | wl-copy"
 
 [modules]
 left = [ "WindowTitle"  ]
-center = [ "Workspaces", "AppLauncher" ]
-right = [ "Weather", "Clipboard", "MediaPlayer", "Tray", "SystemInfo", [ "Clock", "Privacy", "Settings" ] ]
+center = [ "Workspaces", "AppLauncher", "Clipboard" ]
+right = [ "MediaPlayer", "Weather", "SystemInfo", [ "Clock", "Privacy", "Settings" ] ]
 
 [system_info]
 indicators = [ "Cpu", "Memory", "Temperature" ]

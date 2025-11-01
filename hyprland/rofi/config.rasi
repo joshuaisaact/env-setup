@@ -71,7 +71,7 @@ configuration {
 /*	display-window: ;*/
 /*	display-run: ;*/
 /*	display-ssh: ;*/
-/*	display-drun: ;*/
+	display-drun: "";
 /*	display-combi: ;*/
 /*	display-keys: ;*/
 /*	display-filebrowser: ;*/
@@ -168,3 +168,12 @@ configuration {
 }
 
 @theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+
+/* Custom styling for rounded corners */
+window {
+    border-radius: 10px;
+}
+
+mainbox {
+    border-radius: 10px;
+}
