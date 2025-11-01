@@ -8,7 +8,10 @@ My personal development environment configuration files for Mac and Linux.
 - Oh My Posh theme and configuration
 - Micro editor settings
 - Ghostty terminal configuration
-- Yabai window manager configuration
+- Yabai window manager configuration (macOS)
+- Hyprland window manager configuration (Linux/Wayland)
+- Rofi application launcher configuration
+- Ashell configuration
 
 ## Installation
 
