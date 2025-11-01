@@ -17,7 +17,27 @@ Currently bouncing between macOS and Arch Linux. Recently moved from WSL to a pr
 
 ## Installation
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/joshuaisaact/env-setup.git
-   cd env-setup
+Clone the repo:
+```bash
+git clone https://github.com/joshuaisaact/env-setup.git
+cd env-setup
+```
+
+Then run the script for your system:
+
+**macOS:**
+```bash
+./mac.sh
+```
+
+**Arch Linux:**
+```bash
+./arch-linux.sh
+```
+
+**Other Linux (Ubuntu/Debian/Fedora):**
+```bash
+./linux.sh
+```
+
+Scripts will backup your existing configs before copying anything over.
