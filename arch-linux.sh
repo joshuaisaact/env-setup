@@ -28,7 +28,7 @@ fi
 # Install Oh My Posh
 if ! command -v oh-my-posh &> /dev/null; then
     echo "Installing Oh My Posh..."
-    
+
     # Check if AUR helper is available (yay or paru)
     if command -v yay &> /dev/null; then
         echo "Using yay to install Oh My Posh from AUR..."
@@ -39,27 +39,27 @@ if ! command -v oh-my-posh &> /dev/null; then
     else
         echo "No AUR helper found. Installing Oh My Posh manually..."
         curl -s https://ohmyposh.dev/install.sh | bash -s
-        
+
         # Find the Oh My Posh binary
         echo "Locating Oh My Posh binary..."
         OH_MY_POSH_PATH=$(find $HOME -name "oh-my-posh" 2>/dev/null | head -n 1)
-        
+
         if [ -z "$OH_MY_POSH_PATH" ]; then
             # Try a broader search if not found in home directory
             echo "Searching system-wide for Oh My Posh..."
             OH_MY_POSH_PATH=$(sudo find / -name "oh-my-posh" 2>/dev/null | grep -v "Permission denied" | head -n 1)
         fi
-        
+
         if [ -n "$OH_MY_POSH_PATH" ]; then
             echo "Found Oh My Posh at: $OH_MY_POSH_PATH"
-            
+
             # Create symlink to ensure it's in PATH
             echo "Creating symlink in /usr/local/bin..."
             sudo ln -sf "$OH_MY_POSH_PATH" /usr/local/bin/oh-my-posh
-            
+
             # Make sure it's executable
             sudo chmod +x /usr/local/bin/oh-my-posh
-            
+
             # Verify the symlink
             echo "Verifying Oh My Posh installation..."
             ls -la /usr/local/bin/oh-my-posh
