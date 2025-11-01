@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Backup files
+*.backup
+*.bak
+*~
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+.*.swp
+.*.swo
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS-specific
+Thumbs.db
+Desktop.ini
