@@ -25,9 +25,48 @@ fi
 
 # Copy configuration files
 echo "Copying configuration files..."
-cp .zshrc ~/
-cp .config/ohmyposh/zen.toml ~/.config/ohmyposh/
-cp .config/micro/* ~/.config/micro/ 2>/dev/null || true
+
+# Copy zshrc (prefer .zshrc.mac if available)
+if [ -f .zshrc.mac ]; then
+    cp .zshrc.mac ~/.zshrc
+    echo "Copied .zshrc.mac to ~/.zshrc"
+elif [ -f .zshrc ]; then
+    cp .zshrc ~/.zshrc
+    echo "Copied .zshrc to ~/.zshrc"
+else
+    echo "Warning: .zshrc.mac or .zshrc not found in current directory, skipping..."
+fi
+
+# Copy Oh My Posh theme
+if [ -f .config/ohmyposh/zen.toml ]; then
+    cp .config/ohmyposh/zen.toml ~/.config/ohmyposh/
+    echo "Copied Oh My Posh theme"
+else
+    echo "Warning: zen.toml not found, skipping..."
+fi
+
+# Copy micro editor config
+if [ -d .config/micro ]; then
+    cp .config/micro/* ~/.config/micro/ 2>/dev/null || true
+    echo "Copied micro configuration"
+else
+    echo "Warning: micro config directory not found, skipping..."
+fi
+
+# Copy ghostty config if available
+if [ -f .config/ghostty/config ]; then
+    mkdir -p ~/.config/ghostty
+    cp .config/ghostty/config ~/.config/ghostty/
+    echo "Copied ghostty configuration"
+fi
+
+# Copy yabai config if available
+if [ -f .config/yabai/yabairc ]; then
+    mkdir -p ~/.config/yabai
+    cp .config/yabai/yabairc ~/.config/yabai/
+    chmod +x ~/.config/yabai/yabairc
+    echo "Copied yabai configuration"
+fi
 
 # Install Oh My Zsh plugins if needed
 if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]; then

@@ -105,7 +105,7 @@ if [ -f .zshrc.linux ]; then
     cp .zshrc.linux ~/.zshrc
     echo "Copied .zshrc.linux to ~/.zshrc"
 elif [ -f .zshrc ]; then
-    cp .zshrc ~/
+    cp .zshrc ~/.zshrc
     echo "Copied .zshrc to ~/.zshrc"
 else
     echo "Warning: .zshrc.linux or .zshrc not found in current directory, skipping..."
@@ -113,14 +113,23 @@ fi
 
 if [ -f .config/ohmyposh/zen.toml ]; then
     cp .config/ohmyposh/zen.toml ~/.config/ohmyposh/
+    echo "Copied Oh My Posh theme"
 else
     echo "Warning: zen.toml not found, skipping..."
 fi
 
 if [ -d .config/micro ]; then
     cp .config/micro/* ~/.config/micro/ 2>/dev/null || true
+    echo "Copied micro configuration"
 else
     echo "Warning: micro config directory not found, skipping..."
+fi
+
+# Copy ghostty config if available
+if [ -f .config/ghostty/config ]; then
+    mkdir -p ~/.config/ghostty
+    cp .config/ghostty/config ~/.config/ghostty/
+    echo "Copied ghostty configuration"
 fi
 
 # Install Oh My Zsh plugins if needed
