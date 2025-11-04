@@ -1,0 +1,55 @@
+# Mako notification config - matching ashell Tokyo Night theme
+
+# Font
+font=Sans 11
+
+# Tokyo Night colors matching ashell
+background-color=#1a1b26
+text-color=#a9b1d6
+border-color=#7aa2f7
+progress-color=over #414868
+
+# Border (solid style to match ashell)
+border-size=2
+border-radius=8
+
+# Padding and spacing
+padding=15
+margin=10
+
+# Layout
+width=350
+height=120
+
+# Positioning
+anchor=top-right
+max-visible=3
+
+# Timing
+default-timeout=5000
+ignore-timeout=0
+
+# Icons
+max-icon-size=48
+
+# Layer
+layer=overlay
+
+# Actions
+actions=1
+
+# Urgency-specific colors (matching ashell indicators)
+[urgency=low]
+border-color=#7aa2f7
+
+[urgency=normal]
+border-color=#7aa2f7
+
+[urgency=critical]
+border-color=#f7768e
+text-color=#f7768e
+default-timeout=0
+
+# Grouped notifications
+[grouped]
+format=<b>%s</b>\n%b
